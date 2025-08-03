@@ -216,37 +216,50 @@
     </section>
     
     <!-- Take Action Section -->
-    <section id="take-action" class="about" style="background-color: #eaf7ea;">
-        <div class="container">
-            <h2 class="section-title">Take Action Today</h2>
-            <p>Join students around the world in protecting endangered species. Take the pledge and commit to one action this month to help stop poaching.</p>
-            
-            <form style="max-width: 600px; margin: 40px auto;">
-                <div style="margin-bottom: 20px;">
-                    <label style="display: block; margin-bottom: 5px;">Your Name</label>
-                    <input type="text" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
-                </div>
-                
-                <div style="margin-bottom: 20px;">
-                    <label style="display: block; margin-bottom: 5px;">Your Email</label>
-                    <input type="email" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
-                </div>
-                
-                <div style="margin-bottom: 20px;">
-                    <label style="display: block; margin-bottom: 5px;">Your Pledge</label>
-                    <select style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
-                        <option>I will educate 5 friends about poaching</option>
-                        <option>I will organize a fundraiser at my school</option>
-                        <option>I will start a wildlife protection club</option>
-                        <option>I will write to my local representative</option>
-                    </select>
-                </div>
-                
-                <button type="submit" class="btn" style="border: none; cursor: pointer;">Submit Pledge</button>
-            </form>
-        </div>
-    </section>
+    <!-- Replace the existing form with this -->
+<form action="https://formspree.io/f/mjkoepzd" method="POST" style="max-width: 600px; margin: 40px auto;">
+    <div style="margin-bottom: 20px;">
+        <label style="display: block; margin-bottom: 5px;">Your Name</label>
+        <input type="text" name="name" required style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
+    </div>
     
+    <div style="margin-bottom: 20px;">
+        <label style="display: block; margin-bottom: 5px;">Your Email</label>
+        <input type="email" name="_replyto" required style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
+    </div>
+    
+    <div style="margin-bottom: 20px;">
+        <label style="display: block; margin-bottom: 5px;">Your School</label>
+        <input type="text" name="school" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
+    </div>
+    
+    <div style="margin-bottom: 20px;">
+        <label style="display: block; margin-bottom: 5px;">Your Pledge</label>
+        <select name="pledge" required style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
+            <option value="">-- Select your pledge --</option>
+            <option value="educate">I will educate 5 friends about poaching</option>
+            <option value="fundraiser">I will organize a fundraiser at my school</option>
+            <option value="club">I will start a wildlife protection club</option>
+            <option value="letter">I will write to my local representative</option>
+            <option value="other">Other (specify below)</option>
+        </select>
+    </div>
+    
+    <div style="margin-bottom: 20px;" id="customPledge" hidden>
+        <label style="display: block; margin-bottom: 5px;">Custom Pledge</label>
+        <textarea name="custom_pledge" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;"></textarea>
+    </div>
+    
+    <input type="hidden" name="_subject" value="New Wildlife Pledge!">
+    <button type="submit" class="btn" style="border: none; cursor: pointer;">Submit Pledge</button>
+</form>
+
+<script>
+    // Show custom pledge field if "Other" is selected
+    document.querySelector('select[name="pledge"]').addEventListener('change', function() {
+        document.getElementById('customPledge').hidden = this.value !== 'other';
+    });
+</script>
     <!-- Footer -->
     <footer>
         <div class="container">
